@@ -31,13 +31,13 @@ function clean() {
 
 function compile() {
 	#find  -name \*.java -print > file.list
-	javac -g -d classes -cp $CP src/TestJwt.java
+	javac -g -d classes -cp $CP src/com/microlib/service/TestJwt.java
 	echo "Task    : [compile] completed"
     	echo " "
 }
 
 function run() {
-	java -cp $CP TestJwt
+	java -cp $CP com.microlib.service.TestJwt
 	echo "Task    : [run] completed"
     	echo " "
 }

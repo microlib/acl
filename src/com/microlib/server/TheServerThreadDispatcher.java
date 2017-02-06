@@ -11,6 +11,9 @@ import java.net.Socket;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
+import org.apache.commons.logging.*;
+import org.apache.commons.logging.impl.*;
+
 
 public class TheServerThreadDispatcher implements Runnable {
 
@@ -18,9 +21,11 @@ public class TheServerThreadDispatcher implements Runnable {
     private boolean bRunning = false;
     private String name;
     private Socket socket;
+    private static org.apache.commons.logging.Log log;
 
     public TheServerThreadDispatcher(Socket socket) {
         this.socket = socket;
+        log = LogFactory.getLog(TheServerThreadDispatcher.class);
     }
 
     public boolean isRunning() {
@@ -56,16 +61,20 @@ public class TheServerThreadDispatcher implements Runnable {
                 jsonString += matcher.group();
             }
             if (jsonString.equals("")) {
-                response = json.message("ERROR json input string is empty","KO");
+                log.error("json input is empty");
+                response = json.message("ERROR json input is empty","KO");
             }
             else {
                 map = json.parse(new StringBuffer(jsonString));
                 ExecInterface ei = (ExecInterface)Class.forName(map.get("controller").toString()).newInstance();
+                log.info("Found : " + map.get("controller").toString());
+                // always call init
+                ei.init("");
                 response = ei.doProcess(map);
             }
         }
         catch(Exception e) {
-            e.printStackTrace();
+            log.error(e);
             response = json.message("ERROR " + e.toString(),"KO");
         }
         finally {
@@ -85,7 +94,7 @@ public class TheServerThreadDispatcher implements Runnable {
                 bRunning = false;
              }
              catch(Exception e) {
-                 e.printStackTrace();
+                 log.error(e);
              }
         }
     }

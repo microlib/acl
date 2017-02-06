@@ -32,7 +32,7 @@ import javax.naming.NameClassPair;
 import org.apache.commons.logging.*;
 import org.apache.commons.logging.impl.*;
 import com.microlib.common.*;
-import com.microlib.service.*;
+import com.microlib.jndi.service.*;
 
 /**
  * TheServer - a simple remote read and write server
@@ -72,7 +72,7 @@ public class TheServer {
 
             // read config file
             ResourceBundle resource = java.util.ResourceBundle.getBundle("com.microlib.server.TheServer");
-            int count  = Integer.parseInt(resource.getString("plugin.count"));
+            int count  = Integer.parseInt(resource.getString("jndiplugin.count"));
             String name = "";
             String use = "";
             for (int x = 0 ; x < count ; x++) {
@@ -81,7 +81,7 @@ public class TheServer {
                 if (use.equals("true")) {
                     String value = resource.getString("value." + x); 
                     String jndi = resource.getString("jndi." + x); 
-                    PluginInterface pi = (PluginInterface)Class.forName(name).newInstance();
+                    JndiInterface pi = (JndiInterface)Class.forName(name).newInstance();
                     pi.init(value);
 			        initctx.bind(jndi,pi);
                     log.info(name + " bound to jndi " + jndi );
@@ -121,7 +121,7 @@ public class TheServer {
                     String name =  list.next().getName();
                     log.info("Found jndi resource " + name);
                     log.info("Calling destroy() method ");
-                    PluginInterface pi = (PluginInterface)ctx.lookup(name);
+                    JndiInterface pi = (JndiInterface)ctx.lookup(name);
                     pi.destroy();
                 }
                 ctx.close();

@@ -1,4 +1,4 @@
-package com.microlibl.jndi;
+package com.microlib.jndi;
 
 import javax.naming.NameParser;
 import javax.naming.Name;
@@ -9,7 +9,7 @@ import java.util.Properties;
 class DSNameParser implements NameParser {
 
     static Properties syntax = new Properties();
-    static {
+    public DSNameParser() {
         syntax.put("jndi.syntax.direction", "flat");
         syntax.put("jndi.syntax.ignorecase", "false");
     }

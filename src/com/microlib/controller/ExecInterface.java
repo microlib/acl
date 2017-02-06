@@ -4,6 +4,7 @@ import java.util.Map;
 
 public interface ExecInterface {
 
+	public void init(String sIn);
 	public void setName(String name);
 	public String getName();
 	public boolean isRunning();

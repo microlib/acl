@@ -1,7 +1,7 @@
 package com.microlib.controller;
 
 import com.microlib.common.*;
-import com.microlib.service.*;
+import com.microlib.jndi.service.*;
 import com.microlib.dataformat.*;
 import java.util.Map;
 import java.util.List;
@@ -27,14 +27,11 @@ public class SimpleService implements ExecInterface {
 	public String doProcess(Map<String,Object> map) {
         String response = "";
         JsonFormat json = null;
-        JdbcManager jdbc = null;
 		try {
             bRunning = true;
             json = new JsonFormat();
-            jdbc = new JdbcManager();
-            List<Object[]> lst = jdbc.customQuery("select * from filetransfer");
             json.setMap(map);
-            response = json.dataTable(lst);
+			response = new String("{ \"msg\":\"hello testing one tow three\"}");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -44,8 +41,13 @@ public class SimpleService implements ExecInterface {
 			try {
 				bRunning = false;
 			}
-			catch(Exception e) {}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
         return response;
+	}
+
+	public void init(String sIn) {
 	}
 }

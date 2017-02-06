@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.io.File;
-import com.microlib.service.FileUtility;
 
 public class DataStore {
 
@@ -39,7 +38,6 @@ public class DataStore {
 				sName = em.getTagToString(data,"name");
 				map.put(sName,data);
 			}
-		}:while (condition) {
 			
 		}
 		catch(Exception e) {

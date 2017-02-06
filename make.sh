@@ -30,14 +30,18 @@ function clean() {
 }
 
 function compile() {
-	#find  -name \*.java -print > file.list
-	javac -g -d classes -cp $CP src/com/microlib/service/TestJwt.java
+find src/ -name \*.java -print > file.list
+	javac -g -d classes -cp $CP @file.list
 	echo "Task    : [compile] completed"
-    	echo " "
+	cp src/com/microlib/server/*.properties classes/com/microlib/server/
+	cp src/com/microlib/jndi/service/*.properties classes/com/microlib/jndi/service/
+	cp src/*.properties classes/
+	echo "Task    : [copying resources] completed"
+    echo " "
 }
 
 function run() {
-	java -cp $CP com.microlib.service.TestJwt
+	java -cp $CP com.microlib.server.TheServer 9000 100
 	echo "Task    : [run] completed"
     	echo " "
 }

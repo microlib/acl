@@ -1,0 +1,17 @@
+{ "jobs" : [{ 
+        "name" : "FxAlert",
+    		"class" : "com.lmzsoftware.service.V8JavaBridgeImpl",
+		    "script" : "scripts/rates.js",
+		    "params" : "",
+		    "crontab" : "0 0/2 8-20 ? * 1-7",
+		    "enabled" : false
+		  },{		
+		    "name" : "MusicRipper",
+    		"class" : "com.lmzsoftware.service.V8JavaBridgeImpl",
+		    "script" : "scripts/media.js",
+		    "params" : "",
+		    "crontab" : "0 15 22 ? * 1-7",
+		    "enabled" : false
+		  }]
+}		
+

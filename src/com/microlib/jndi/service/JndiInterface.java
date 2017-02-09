@@ -1,5 +1,5 @@
 /**
- * @(#) PluginInterface
+ * @(#) JndiInterface
  *
  * In the light of open source software you are free to do what you like with this code.
  * Redistribution and use in source and binary forms, with or without
@@ -11,13 +11,13 @@
  * @file: PluginInterface.java
  *
  */
- 
-package com.microlib.jndi.service;
 
+package com.microlib.jndi.service;
 
 public interface JndiInterface {
 
-	public void init(String value);
-	public void destroy();
-	
+  public void init(String value);
+
+  public void destroy();
+
 }

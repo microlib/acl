@@ -1,4 +1,5 @@
 package com.microlib.common;
+
 /**
  * Element Mapping Exception Class
  * 
@@ -10,24 +11,23 @@ package com.microlib.common;
  */
 public class ElementMappingException extends Exception {
 
-	private String sMessage = null;
+  private String sMessage = null;
 
-	public ElementMappingException() {
-	}
+  public ElementMappingException() {
+  }
 
-	public ElementMappingException(String sMessage)	{
-	    this.sMessage = sMessage;
-	}
+  public ElementMappingException(String sMessage) {
+    this.sMessage = sMessage;
+  }
 
+  public String toString() {
+    String sMessage = new String();
+    sMessage = "ERROR  ElementMappingException : " + this.sMessage;
+    return sMessage;
+  }
 
-	public String toString() {
-	    String sMessage = new String();
-	    sMessage =  "ERROR  ElementMappingException : " + this.sMessage ;
-	    return sMessage;
-	}
+  public int getSeverity() {
+    return 0;
+  }
 
-	public int getSeverity() {
-	    return 0;
-	}
-	
 }

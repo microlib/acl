@@ -44,29 +44,25 @@ import com.microlib.common.*;
  */
 public class QuartzScriptManager implements Job {
 
-	public QuartzScriptManager() {
-	}
+  public QuartzScriptManager() {
+  }
 
-	public void execute(JobExecutionContext context) throws JobExecutionException {
-		try {
-			JobDataMap data = context.getJobDetail().getJobDataMap();
-			String jobData =  (String)data.get("job");
-            System.out.println("DEBUG " + jobData);
-            String[] tmp = jobData.split(":");
-			
-			if (tmp[1].equals("true")) {
-				// make use of plug-in architecture - allows for various implementations
-				// SchedulerInterface mi = (SchedulerInterface)Class.forName(em.getTagToString(sJob,"class")).newInstance();
-				// mi.doProcess(em.getTagToString(sJob,"script"),em.getTagToString(sJob,"params"));
-			}
-			else {
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-		}
-	}
+  public void execute(JobExecutionContext context) throws JobExecutionException {
+    try {
+      JobDataMap data = context.getJobDetail().getJobDataMap();
+      String jobData = (String) data.get("job");
+      System.out.println("DEBUG " + jobData);
+      String[] tmp = jobData.split(":");
+
+      if (tmp[1].equals("true")) {
+        // make use of plug-in architecture - allows for various implementations
+        // SchedulerInterface mi = (SchedulerInterface)Class.forName(em.getTagToString(sJob,"class")).newInstance();
+        // mi.doProcess(em.getTagToString(sJob,"script"),em.getTagToString(sJob,"params"));
+      } else {
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+    }
+  }
 }
-

@@ -3,3 +3,6 @@ language: java
 script:
   - ./make.sh clean
   - ./make.sh compile
+
+notifications:
+  slack: microlib:LMRLKmZEldpHe2FQv6Pszuzu

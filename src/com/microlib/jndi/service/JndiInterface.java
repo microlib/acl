@@ -8,7 +8,7 @@
  * @author: Luigi Mario Zuccarelli
  * @version: 1.10
  * @date: Generated on Mon Dec 29 15:30:20 CEST 2014
- * @file: PluginInterface.java
+ * @file: JndiInterface.java
  *
  */
 

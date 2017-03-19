@@ -26,24 +26,24 @@ function usage() {
 function clean() {
 	rm -rf classes/com/*
 	echo "Task    : [clean] completed"
-    	echo " "
+ 	echo " "
 }
 
 function compile() {
-find src/ -name \*.java -print > file.list
+  find src/ -name \*.java -print > file.list
 	javac -g -d classes -cp $CP @file.list
 	echo "Task    : [compile] completed"
 	cp src/com/microlib/server/*.properties classes/com/microlib/server/
 	cp src/com/microlib/jndi/service/*.properties classes/com/microlib/jndi/service/
 	cp src/*.properties classes/
 	echo "Task    : [copying resources] completed"
-    echo " "
+  echo " "
 }
 
 function run() {
 	java -cp $CP com.microlib.server.TheServer 9000 100
 	echo "Task    : [run] completed"
-    	echo " "
+  echo " "
 }
 
 

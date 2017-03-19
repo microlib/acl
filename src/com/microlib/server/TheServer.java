@@ -93,6 +93,7 @@ public class TheServer {
       log.info(" ");
       log.info("Press CTRL-C to gracefully shutdown the server ");
       log.info(" ");
+      log.info(" ");
 
       while (!bStop) {
         Socket socket = listener.accept();
@@ -128,5 +129,4 @@ public class TheServer {
       }
     }
   }
-
 }
